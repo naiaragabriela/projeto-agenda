@@ -25,7 +25,9 @@ do
     switch (op)
     {
         case 1:
-            phoneBook.Add(CreateContact());
+            var aux = CreateContact();
+            phoneBook.Add(aux);
+            WriteFileAgenda(aux.ToString());
             break;
         case 2:
             EditContact(FindContact());
@@ -44,6 +46,39 @@ do
             break;
     }
 } while (true);
+
+void WriteFileAgenda(string contact)
+{
+    try
+    {
+        StreamWriter sw = new StreamWriter("AgendaDeContatos.txt");
+        sw.WriteLine(contact);
+        sw.Close();
+    }catch (Exception)
+    {
+        throw;
+    }
+    finally
+    {
+        Console.WriteLine("Registro gravado com sucesso!");
+        Thread.Sleep(1000);
+    }
+}
+List<Contact> LoadFileAgenda()
+{
+    if (!File.Exists("AgendaDeContatos.txt"))
+    {
+        StreamWriter sw = new StreamWriter("AgendaDeContatos.txt");
+        sw.Close();
+    }
+    StreamReader sr = new StreamReader("AgendaDeContatos.txt");
+    string textContact = "";
+    List <Contact> phoneBook = new List<Contact>();
+    while ((textContact = sr.ReadLine()) != null)
+    {
+        var values = textContact.Split()
+    }
+}
 
 Contact FindContact()
 {
