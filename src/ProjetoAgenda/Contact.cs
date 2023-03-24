@@ -4,18 +4,23 @@ namespace ProjetoAgenda
 {
     internal class Contact
     {
+        public Contact()
+        {
+        }
+
         public string Name { get; set; }
         public Address Address { get; set; }
         public string Phone { get; set; }
         public string? Email { get; set; }
 
-        public Contact (string name, string phone)
+        public Contact(string name, Address address, string phone, string? email)
         {
-            this.Name = name;
-            this.Address = new Address(); 
-            this.Phone = phone;
-
+            Name = name;
+            Address = address;
+            Phone = phone;
+            Email = email;
         }
+
         public void EditPhone(string phone)
         {
             this.Phone = phone;
@@ -26,10 +31,18 @@ namespace ProjetoAgenda
             this.Email = email;
         }
 
+
         public override string ToString()
         {
-         
-            return $"\n\nNome: {Name}\nTelefone:{Phone}{Address}";
+
+            return $"{Name}|{Phone}|{Address}";
         }
+
+
+        //public override string ToUser()
+        //{
+         
+        //    return $"\n\nNome: {Name}\nTelefone:{Phone}\nEndereço: {Address}";
+        //}
     }
 }

@@ -34,10 +34,13 @@ namespace ProjetoAgenda
         {
             this.Country = country;
         }
-
         public override string ToString()
         {
-            return "Endereço: " + Street + "\nCidade: " + City + "\nEstado: "+ State +"\nPostalCode: " + PostalCode + "\nPaís: " + Country + ".";
+            return Street + "|" + City + "|" + State + "|" + PostalCode + "|" + Country + "|";
         }
+        //public override string ToUser()
+        //{
+        //    return "Endereço: " + Street + "\nCidade: " + City + "\nEstado: "+ State +"\nPostalCode: " + PostalCode + "\nPaís: " + Country + ".";
+        //}
     }
 }

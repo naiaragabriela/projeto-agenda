@@ -1,26 +1,17 @@
-﻿using ProjetoAgenda;
+﻿using System.Diagnostics.Metrics;
+using System.IO;
+using ProjetoAgenda;
 
 
 List<Contact> phoneBook = new List<Contact>();
 
 
-Contact contact = new Contact("Naiara", "333-1234");
-contact.Address.EditStreet("Rua Nove de Julho, 2100");
-contact.Address.EditCity("Araraquara");
-contact.Address.EditState("Sao Paulo");
-contact.Address.EditPostalCode("12895-000");
-contact.Address.EditCountry("Brasil");
-
-Contact contact2 = new Contact("Sheldon", "333-1234");
-contact2.Address.EditStreet("Rua do Sheldon, 2100");
-contact2.Address.EditCity("Passadena");
-contact2.Address.EditState("California");
-contact2.Address.EditPostalCode("91001-000");
-contact2.Address.EditCountry("EUA");
+Contact contact = new Contact();
 
 int op;
 do
 {
+    phoneBook = LoadFileAgenda();
     op = Menu();
     switch (op)
     {
@@ -76,8 +67,22 @@ List<Contact> LoadFileAgenda()
     List <Contact> phoneBook = new List<Contact>();
     while ((textContact = sr.ReadLine()) != null)
     {
-        var values = textContact.Split()
+        var values = textContact.Split("|");
+        Contact newContact = new Contact();
+        Address newAddress = new Address();
+        newContact.Name = values[0];
+        newContact.Phone = values[1];
+        newAddress.Street = values[2];
+        newAddress.City = values[3];
+        newAddress.State = values[4];
+        newAddress.PostalCode = values[5];
+        newAddress.Country = values[6];
+        newContact.Address = newAddress;
+
+        phoneBook.Add(newContact);
     }
+    sr.Close();
+    return phoneBook;
 }
 
 Contact FindContact()
@@ -100,7 +105,6 @@ Contact CreateContact()
     string name = Console.ReadLine();
     Console.WriteLine("Informe o telefone: ");
     string phone = Console.ReadLine();
-    Contact contact = new(name, phone);
     return contact;
 }
 
