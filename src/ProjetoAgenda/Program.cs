@@ -78,7 +78,7 @@ List<Contact> LoadFileAgenda()
         newAddress.PostalCode = values[5];
         newAddress.Country = values[6];
         newContact.Address = newAddress;
-
+        newContact.Email = values[7];
         phoneBook.Add(newContact);
     }
     sr.Close();
@@ -105,6 +105,22 @@ Contact CreateContact()
     string name = Console.ReadLine();
     Console.WriteLine("Informe o telefone: ");
     string phone = Console.ReadLine();
+    Console.WriteLine("Informe o endereço deste contato: ");
+
+    string street = Console.ReadLine();
+    Console.WriteLine("Informe o telefone: ");
+
+
+    newContact.Name = values[0];
+    newAddress.Street = values[1];
+    newAddress.City = values[2];
+    newAddress.State = values[3];
+    newAddress.PostalCode = values[4];
+    newAddress.Country = values[5];
+    newContact.Address = newAddress;
+    newContact.Phone = values[6];
+    newContact.Email = values[7];
+
     return contact;
 }
 

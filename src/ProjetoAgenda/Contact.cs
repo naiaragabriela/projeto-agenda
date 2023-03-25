@@ -13,12 +13,18 @@ namespace ProjetoAgenda
         public string Phone { get; set; }
         public string? Email { get; set; }
 
-        public Contact(string name, Address address, string phone, string? email)
+        public Contact(string name, string phone, Address address, string? email)
         {
             Name = name;
-            Address = address;
             Phone = phone;
+            Address = address;
             Email = email;
+        }
+
+
+        public void EditName(string name)
+        {
+            this.Name= name;
         }
 
         public void EditPhone(string phone)
@@ -35,7 +41,7 @@ namespace ProjetoAgenda
         public override string ToString()
         {
 
-            return $"{Name}|{Phone}|{Address}";
+            return $"{Name}|{Phone}|{Address}|{Email}|";
         }
 
 
