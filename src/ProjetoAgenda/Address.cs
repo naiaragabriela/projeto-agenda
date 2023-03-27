@@ -8,12 +8,12 @@ namespace ProjetoAgenda
         public string State { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
+
         public Address()
         {
-
-
+            
         }
-
+        
         public void EditStreet(string street)
         {
             this.Street = street;
@@ -34,10 +34,13 @@ namespace ProjetoAgenda
         {
             this.Country = country;
         }
-
         public override string ToString()
         {
-            return "Endereço: " + Street + "\nCidade: " + City + "\nEstado: "+ State +"\nPostalCode: " + PostalCode + "\nPaís: " + Country + ".";
+            return Street + "|" + City + "|" + State + "|" + PostalCode + "|" + Country;
+        }
+        public string ToUser()
+        {
+            return "Rua: " + Street + "\nCidade: " + City + "\nEstado: " + State + "\nPostalCode: " + PostalCode + "\nPaís: " + Country + ".";
         }
     }
 }

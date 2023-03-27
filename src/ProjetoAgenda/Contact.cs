@@ -9,27 +9,28 @@ namespace ProjetoAgenda
         public string Phone { get; set; }
         public string? Email { get; set; }
 
-        public Contact (string name, string phone)
+        public Contact()
         {
-            this.Name = name;
-            this.Address = new Address(); 
-            this.Phone = phone;
-
+        }
+        public void EditName(string name)
+        {
+            this.Name= name;
         }
         public void EditPhone(string phone)
         {
             this.Phone = phone;
         }
-
         public void EditEmail(string email)
         {
             this.Email = email;
         }
-
         public override string ToString()
         {
-         
-            return $"\n\nNome: {Name}\nTelefone:{Phone}{Address}";
+            return $"{Name}|{Phone}|{Address}|{Email}|";
+        }
+        public string ToUser()
+        {
+            return $"\n\nNome: {Name}\nTelefone:{Phone}\nEndereço: {Address.ToUser()}\nEmail:{Email}";
         }
     }
 }
